@@ -1,6 +1,8 @@
 package servidor;
 
-public class SimpleMessage
+import java.io.Serializable;
+
+public class SimpleMessage implements Serializable
 {
     String simple;
 

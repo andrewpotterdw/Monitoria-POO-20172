@@ -19,12 +19,13 @@ public class Main
             {
                 Socket request = response.accept();
                 ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+                System.err.println("err7");
+                ObjectOutputStream out = new ObjectOutputStream(request.getOutputStream());
                 responseMsg = (SimpleMessage)in.readObject();
-                in.readObject();
                 in.close();
                 System.out.println(responseMsg);
                 IP = request.getInetAddress().getHostAddress();
-                ObjectOutputStream out = new ObjectOutputStream(request.getOutputStream());
+                System.err.println("err8");
                 out.flush();
                 if(ips.addIP(IP))
                 {

@@ -24,10 +24,10 @@ public class Main
         {
             Socket request = new Socket("169.254.23.78", 64000);
             ObjectOutputStream out = new ObjectOutputStream(request.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(request.getInputStream());
             out.flush();
             out.writeObject(requestMsg);
             out.close();
-            ObjectInputStream in = new ObjectInputStream(request.getInputStream());
             requestMsg = (SimpleMessage)in.readObject();
             in.close();
             request.close();
