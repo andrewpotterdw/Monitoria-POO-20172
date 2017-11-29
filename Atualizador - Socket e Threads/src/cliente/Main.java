@@ -22,12 +22,12 @@ public class Main
         SimpleMessage requestMsg = new SimpleMessage("Por favor me ponha em sua lista de conexões!");
         try
         {
-            Socket request = new Socket("169.254.23.78", 64000);
+            Socket request = new Socket("192.168.218.1", 64000);
             ObjectOutputStream out = new ObjectOutputStream(request.getOutputStream());
             ObjectInputStream in = new ObjectInputStream(request.getInputStream());
             out.flush();
             out.writeObject(requestMsg);
-            out.close();
+            //out.close();
             requestMsg = (SimpleMessage)in.readObject();
             in.close();
             request.close();
@@ -57,7 +57,7 @@ public class Main
         }
         catch(Exception e)
         {
-            System.err.println("Conexão encerrada por falha!");
+            System.err.println("Conexão no servidor encerrada por falha!");
         }
     }
 }

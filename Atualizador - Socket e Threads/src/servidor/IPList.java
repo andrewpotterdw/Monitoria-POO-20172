@@ -32,13 +32,14 @@ public class IPList
                 break;
             }
         }
-        if(flag) {
-            this.IPs.add(IP);
-            return true;
+        if(flag)
+        {
+            return false;
         }
         else
         {
-            return false;
+            this.IPs.add(IP);
+            return true;
         }
     }
 
