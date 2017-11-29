@@ -1,11 +1,11 @@
 package cliente;
 
-import servidor.IPList;
+//import servidor.IPList;
 import servidor.SimpleMessage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
+//import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main
@@ -13,11 +13,12 @@ public class Main
     public static void main(String[] args) throws IOException
     {
         System.out.println("Aplicação Cliente!");
+        ServerSide serverSocket = new ServerSide();
+        serverSocket.run();
         socket();
-        serverSocket();
     }
 
-    public static void socket()
+    private static void socket()
     {
         SimpleMessage requestMsg = new SimpleMessage("Por favor me ponha em sua lista de conexões!");
         try
@@ -39,7 +40,7 @@ public class Main
         System.out.println(requestMsg);
     }
 
-    public static void serverSocket()
+    /*public static void serverSocket()
     {
         IPList ips;
         try
@@ -59,6 +60,6 @@ public class Main
         {
             System.err.println("Conexão no servidor encerrada por falha!");
         }
-    }
+    }*/
 }
 

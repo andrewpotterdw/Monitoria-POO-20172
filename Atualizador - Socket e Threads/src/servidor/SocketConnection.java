@@ -5,11 +5,11 @@ import java.net.Socket;
 
 public class SocketConnection implements Runnable
 {
-    String IP;
-    int port;
-    IPList ips;
+    private String IP;
+    private int port;
+    private IPList ips;
 
-    public SocketConnection(String IP, int port, IPList ips)
+    SocketConnection(String IP, int port, IPList ips)
     {
         this.IP = IP;
         this.port = port;
@@ -29,22 +29,19 @@ public class SocketConnection implements Runnable
         }
         catch(Exception e)
         {
-            System.err.println("Conexão encerrada por falha!");
+            System.err.println("Conexão no socket encerrada por falha!");
         }
 
     }
 
-    public String getIP()
+    private String getIP()
     {
         return this.IP;
     }
 
-    public void setIP(String IP)
-    {
-        this.IP = IP;
-    }
+    private void setIP(String IP) { this.IP = IP; }
 
-    public int getPort()
+    private int getPort()
     {
         return this.port;
     }
@@ -59,15 +56,5 @@ public class SocketConnection implements Runnable
         return "IP: " + this.IP + "\nPorta: " + port;
     }
 
-    public boolean equals(SocketConnection socket)
-    {
-          if(socket.getIP().equals(this.IP) && socket.getPort() == this.port)
-          {
-              return true;
-          }
-          else
-          {
-              return false;
-          }
-    }
+    public boolean equals(SocketConnection socket) { return(socket.getIP().equals(this.IP) && socket.getPort() == this.port); }
 }

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class IPList
 {
-    ArrayList<String> IPs;
+    private ArrayList<String> IPs;
 
-    public IPList()
+    IPList()
     {
         IPs = new ArrayList<String>();
     }
 
-    public ArrayList<String> getIPs()
+    private ArrayList<String> getIPs()
     {
         return this.IPs;
     }
@@ -21,13 +21,11 @@ public class IPList
         this.IPs = IPs;
     }
 
-    public boolean addIP(String IP)
+    boolean addIP(String IP)
     {
         boolean flag = false;
-        for(int i = 0; i < this.IPs.size(); i++)
-        {
-            if(this.IPs.get(i).equals(IP))
-            {
+        for (String IP1 : this.IPs) {
+            if (IP1.equals(IP)) {
                 flag = true;
                 break;
             }
@@ -84,37 +82,30 @@ public class IPList
         }
     }
 
-    public String getIP(int index)
+    String getIP(int index)
     {
         return IPs.get(index);
     }
 
-    public int size()
+    int size()
     {
         return IPs.size();
     }
 
     public String toString()
     {
-        String sReturn = "Lista de IPs: \n\n";
+        StringBuilder sReturn = new StringBuilder("Lista de IPs: \n\n");
         for(int i = 0; i < this.IPs.size(); i++)
         {
-            sReturn += (i+1) + " - " + this.IPs.get(i) + "\n";
+            sReturn.append(i + 1).append(" - ").append(this.IPs.get(i)).append("\n");
         }
-        return sReturn;
+        return sReturn.toString();
     }
 
 
     public boolean equals(IPList IPL)
     {
-        if(IPL.getIPs().equals(this.IPs))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return IPL.getIPs().equals(this.IPs);
     }
 
 }

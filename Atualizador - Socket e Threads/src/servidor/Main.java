@@ -19,18 +19,14 @@ public class Main
             {
                 Socket request = response.accept();
                 ObjectInputStream in = new ObjectInputStream(request.getInputStream());
-                System.err.println("err7");
                 ObjectOutputStream out = new ObjectOutputStream(request.getOutputStream());
                 responseMsg = (SimpleMessage)in.readObject();
                 //in.close();
                 System.out.println(responseMsg);
                 IP = request.getInetAddress().getHostAddress();
-                System.err.println("err8");
                 out.flush();
-                System.err.println("err9");
                 if(ips.addIP(IP))
                 {
-                    System.err.println("goal1");
                     out.writeObject(new SimpleMessage("Seu IP agora faz parte da lista de conexões do servidor!"));
                     out.close();
                     in.close();
@@ -43,7 +39,6 @@ public class Main
                 }
                 else
                 {
-                    System.err.println("goal2");
                     out.writeObject(new SimpleMessage("Seu IP já faz parte da lista de conexões do servidor!"));
                     out.close();
                     in.close();

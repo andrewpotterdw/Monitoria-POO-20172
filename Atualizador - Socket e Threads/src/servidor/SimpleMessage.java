@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class SimpleMessage implements Serializable
 {
-    String simple;
+    private String simple;
 
     public SimpleMessage(String simple)
     {
@@ -16,7 +16,7 @@ public class SimpleMessage implements Serializable
 
     }
 
-    public String getSimple()
+    private String getSimple()
     {
         return this.simple;
     }
@@ -31,15 +31,5 @@ public class SimpleMessage implements Serializable
         return "MSG: " + this.simple;
     }
 
-    public boolean equals(SimpleMessage simpleS)
-    {
-        if(simpleS.getSimple().equals(this.simple))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    public boolean equals(SimpleMessage simpleS) { return(simpleS.getSimple().equals(this.simple)); }
 }
