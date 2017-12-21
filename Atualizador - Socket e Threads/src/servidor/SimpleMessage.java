@@ -11,10 +11,7 @@ public class SimpleMessage implements Serializable
         this.simple = simple;
     }
 
-    public SimpleMessage()
-    {
-
-    }
+    public SimpleMessage() { }
 
     private String getSimple()
     {
@@ -28,7 +25,7 @@ public class SimpleMessage implements Serializable
 
     public String toString()
     {
-        return "MSG: " + this.simple;
+        return this.simple;
     }
 
     public boolean equals(SimpleMessage simpleS) { return(simpleS.getSimple().equals(this.simple)); }

@@ -1,8 +1,9 @@
 package servidor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class IPList
+public class IPList implements Serializable
 {
     private ArrayList<String> IPs;
 
@@ -46,7 +47,7 @@ public class IPList
         this.IPs = new ArrayList<String>();
     }
 
-    public boolean removeByIP(String IP)
+    void removeByIP(String IP)
     {
         boolean flag = false;
         int i;
@@ -61,11 +62,6 @@ public class IPList
         if(flag)
         {
             this.IPs.remove(i);
-            return true;
-        }
-        else
-        {
-            return false;
         }
     }
 
@@ -102,10 +98,8 @@ public class IPList
         return sReturn.toString();
     }
 
-
     public boolean equals(IPList IPL)
     {
         return IPL.getIPs().equals(this.IPs);
     }
-
 }

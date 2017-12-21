@@ -2,22 +2,25 @@ package servidor;
 
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
-public class SocketConnection implements Runnable
-{
+public class SocketConnection implements Runnable {
+    private ArrayList<Boolean> absent;
     private String IP;
     private int port;
     private IPList ips;
 
-    SocketConnection(String IP, int port, IPList ips)
+    SocketConnection(String IP, int port, IPList ips, ArrayList<Boolean> absent)
     {
         this.IP = IP;
         this.port = port;
         this.ips = ips;
+        this.absent = absent;
     }
 
     public void run()
     {
+        boolean returnValue = false;
         try
         {
             Socket request = new Socket(IP, port);
@@ -29,9 +32,8 @@ public class SocketConnection implements Runnable
         }
         catch(Exception e)
         {
-            System.err.println("Conexão no socket encerrada por falha!");
+            absent.add(true);
         }
-
     }
 
     private String getIP()

@@ -1,11 +1,9 @@
 package cliente;
 
-//import servidor.IPList;
 import servidor.SimpleMessage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-//import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main
@@ -14,7 +12,7 @@ public class Main
     {
         System.out.println("Aplicação Cliente!");
         ServerSide serverSocket = new ServerSide();
-        serverSocket.run();
+        serverSocket.start();
         socket();
     }
 

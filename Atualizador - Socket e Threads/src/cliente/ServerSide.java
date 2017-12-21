@@ -6,16 +6,16 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerSide implements Runnable
+public class ServerSide extends Thread
 {
+    private IPList ips;
     ServerSide()
     {
-
+        this.ips = null;
     }
 
     public void run()
     {
-        IPList ips;
         try
         {
             ServerSocket response = new ServerSocket(54000);
@@ -23,10 +23,10 @@ public class ServerSide implements Runnable
             {
                 Socket request = response.accept();
                 ObjectInputStream in = new ObjectInputStream(request.getInputStream());
-                ips = (IPList)in.readObject();
+                this.ips = (IPList)in.readObject();
                 in.close();
                 request.close();
-                System.out.println(ips);
+                System.out.println(this.ips);
             }
         }
         catch(Exception e)
